@@ -1,0 +1,1370 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "ASC API",
+        "description": "API spec for Microsoft.Security (Azure Security Center) resource provider",
+        "version": "2017-08-01-preview"
+    },
+    "host": "management.azure.com",
+    "schemes": ["https"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "security": [{
+        "azure_auth": [
+            "user_impersonation"
+        ]
+    }],
+    "securityDefinitions": {
+        "azure_auth": {
+            "type": "oauth2",
+            "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+            "flow": "implicit",
+            "description": "Azure Active Directory OAuth2 Flow",
+            "scopes": {
+                "user_impersonation": "impersonate your user account"
+            }
+        }
+    },
+    "paths": {
+        "/providers/Microsoft.Security/operations": {
+            "get": {
+                "tags": ["Operations"],
+                "description": "Exposes all available operations for discovery purposes.",
+                "operationId": "Operations_List",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/OperationList"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/providers/Microsoft.Security/pricings": {
+            "get": {
+                "tags": ["Pricings"],
+                "description": "Security pricing configurations in the subscription",
+                "operationId": "PricingsSubscription_List",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PricingList"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/pricings": {
+            "get": {
+                "tags": ["Pricings"],
+                "description": "Security pricing configurations in the resource group",
+                "operationId": "PricingsResourceGroup_List",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/ResourceGroupName"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PricingList"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/providers/Microsoft.Security/pricings/{pricingName}": {
+            "get": {
+                "tags": ["Pricings"],
+                "description": "Security pricing configuration in the subscriptionSecurity pricing configuration in the subscription",
+                "operationId": "PricingsSubscription_Get",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/PricingName"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Pricing"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Pricings"],
+                "description": "Security pricing configuration in the subscription",
+                "operationId": "PricingsSubscription_Create",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/PricingName"
+                }, {
+                    "$ref": "#/parameters/Pricing"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Pricing"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/pricings/{pricingName}": {
+            "get": {
+                "tags": ["Pricings"],
+                "description": "Security pricing configuration in the resource group",
+                "operationId": "PricingsResourceGroup_Get",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/ResourceGroupName"
+                }, {
+                    "$ref": "#/parameters/PricingName"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Pricing"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Pricings"],
+                "description": "Security pricing configuration in the resource group",
+                "operationId": "PricingsResourceGroup_Create",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/ResourceGroupName"
+                }, {
+                    "$ref": "#/parameters/PricingName"
+                }, {
+                    "$ref": "#/parameters/Pricing"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Pricing"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts": {
+            "get": {
+                "tags": ["Security Contacts"],
+                "description": "Security contact configurations for the subscription",
+                "operationId": "SecurityContactSubscription_List",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SecurityContactList"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityContacts": {
+            "get": {
+                "tags": ["Security Contacts"],
+                "description": "Security contact configurations for the subscription",
+                "operationId": "SecurityContactResourceGroup_List",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/ResourceGroupName"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SecurityContactList"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityContacts/{securityContactName}": {
+            "get": {
+                "tags": ["Security Contacts"],
+                "description": "Security contact configurations for the subscription",
+                "operationId": "SecurityContactResourceGroup_Get",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/SecurityContactName"
+                }, {
+                    "$ref": "#/parameters/ResourceGroupName"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SecurityContact"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Security Contacts"],
+                "description": "Security contact configurations for the subscription",
+                "operationId": "SecurityContactResourceGroup_Create",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/SecurityContactName"
+                }, {
+                    "$ref": "#/parameters/SecurityContact"
+                }, {
+                    "$ref": "#/parameters/ResourceGroupName"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SecurityContact"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Security Contacts"],
+                "description": "Security contact configurations for the subscription",
+                "operationId": "SecurityContactResourceGroup_Delete",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/SecurityContactName"
+                }, {
+                    "$ref": "#/parameters/ResourceGroupName"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SecurityContact"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": ["Security Contacts"],
+                "description": "Security contact configurations for the subscription",
+                "operationId": "SecurityContactResourceGroup_Update",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/SecurityContactName"
+                }, {
+                    "$ref": "#/parameters/SecurityContact"
+                }, {
+                    "$ref": "#/parameters/ResourceGroupName"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SecurityContact"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/providers/Microsoft.Security/workspaceSettings": {
+            "get": {
+                "tags": ["Workspace Settings"],
+                "description": "Settings about where we should store your security data and logs",
+                "operationId": "WorkspaceSettingsSubscription_List",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WorkspaceSettingList"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/providers/Microsoft.Security/workspaceSettings/{workspaceSettingName}": {
+            "get": {
+                "tags": ["Workspace Settings"],
+                "description": "Settings about where we should store your security data and logs",
+                "operationId": "WorkspaceSettingsSubscription_Get",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/WorkspaceSettingName"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WorkspaceSetting"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Workspace Settings"],
+                "description": "Settings about where we should store your security data and logs",
+                "operationId": "WorkspaceSettingsSubscription_Create",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/WorkspaceSettingName"
+                }, {
+                    "$ref": "#/parameters/WorkspaceSetting"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WorkspaceSetting"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": ["Workspace Settings"],
+                "description": "Settings about where we should store your security data and logs",
+                "operationId": "WorkspaceSettingsSubscription_Update",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/WorkspaceSettingName"
+                }, {
+                    "$ref": "#/parameters/WorkspaceSetting"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WorkspaceSetting"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/workspaceSettings": {
+            "get": {
+                "tags": ["Workspace Settings"],
+                "description": "Settings about where we should store your security data and logs",
+                "operationId": "WorkspaceSettingsResourceGroups_List",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/ResourceGroupName"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WorkspaceSettingList"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/workspaceSettings/{workspaceSettingName}": {
+            "get": {
+                "tags": ["Workspace Settings"],
+                "description": "Settings about where we should store your security data and logs",
+                "operationId": "WorkspaceSettingsResourceGroups_Get",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/WorkspaceSettingName"
+                }, {
+                    "$ref": "#/parameters/ResourceGroupName"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WorkspaceSetting"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Workspace Settings"],
+                "description": "Settings about where we should store your security data and logs",
+                "operationId": "WorkspaceSettingsResourceGroups_Create",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/WorkspaceSettingName"
+                }, {
+                    "$ref": "#/parameters/WorkspaceSetting"
+                }, {
+                    "$ref": "#/parameters/ResourceGroupName"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WorkspaceSetting"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Workspace Settings"],
+                "description": "Settings about where we should store your security data and logs",
+                "operationId": "WorkspaceSettingsResourceGroups_Delete",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/WorkspaceSettingName"
+                }, {
+                    "$ref": "#/parameters/ResourceGroupName"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WorkspaceSetting"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": ["Workspace Settings"],
+                "description": "Settings about where we should store your security data and logs",
+                "operationId": "WorkspaceSettingsResourceGroups_Update",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/WorkspaceSettingName"
+                }, {
+                    "$ref": "#/parameters/WorkspaceSetting"
+                }, {
+                    "$ref": "#/parameters/ResourceGroupName"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WorkspaceSetting"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/providers/Microsoft.Security/autoProvisioningSettings": {
+            "get": {
+                "tags": ["AutoProvisioningSettings"],
+                "description": "Exposes the auto provisioning settings of the subscriptions",
+                "operationId": "AutoProvisioningSetting_List",
+                "parameters": [{
+                        "$ref": "#/parameters/ApiVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/SubscriptionId"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/AutoProvisioningSettingList"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/providers/Microsoft.Security/autoProvisioningSettings/{settingName}": {
+            "get": {
+                "tags": ["AutoProvisioningSettings"],
+                "description": "Details of a specific setting",
+                "operationId": "AutoProvisioningSettings_Get",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/AutoProvisioningSettingName"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/AutoProvisioningSetting"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["AutoProvisioningSettings"],
+                "description": "Details of a specific setting",
+                "operationId": "AutoProvisioningSettings_Put",
+                "parameters": [{
+                    "$ref": "#/parameters/ApiVersion"
+                }, {
+                    "$ref": "#/parameters/SubscriptionId"
+                }, {
+                    "$ref": "#/parameters/AutoProvisioningSettingName"
+                }, {
+                    "$ref": "#/parameters/AutoProvisioningSetting"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/AutoProvisioningSetting"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/providers/Microsoft.Security/compliances": {
+            "get": {
+                "tags": ["Compliances"],
+                "description": "The Compliance scores of the specific subscription.",
+                "operationId": "SubscriptionCompliance_List",
+                "parameters": [{
+                        "$ref": "#/parameters/ApiVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/SubscriptionId"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ComplianceList"
+                        }
+                    },
+                    "default": {
+                        "description": "Error while trying to get Compliance scores of the specific subscription.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionId}/providers/Microsoft.Security/compliances/{complianceName}": {
+            "get": {
+                "tags": ["Compliances"],
+                "description": "Details of a specific Compliance.",
+                "operationId": "SubscriptionCompliance_Get",
+                "parameters": [{
+                        "$ref": "#/parameters/ApiVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/SubscriptionId"
+                    },
+                    {
+                        "$ref": "#/parameters/ComplianceName"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Compliance"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Security/compliances": {
+            "get": {
+                "tags": ["Compliances"],
+                "description": "The Compliance scores of the specific management group.",
+                "operationId": "MgCompliance_List",
+                "parameters": [{
+                        "$ref": "#/parameters/ApiVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/ManagementGroupId"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ComplianceList"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Security/compliances/{complianceName}": {
+            "get": {
+                "tags": ["Compliances"],
+                "description": "Details of a specific Compliance.",
+                "operationId": "MgCompliance_Get",
+                "parameters": [{
+                        "$ref": "#/parameters/ApiVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/ManagementGroupId"
+                    },
+                    {
+                        "$ref": "#/parameters/ComplianceName"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Compliance"
+                        }
+                    },
+                    "default": {
+                        "description": "Error response describing why the operation failed.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ErrorResponse": {
+            "description": "Error response structure.",
+            "properties": {
+                "error": {
+                    "readOnly": true,
+                    "type": "object",
+                    "properties": {
+                        "code": {
+                            "type": "string",
+                            "description": "Short constant description of the error"
+                        },
+                        "message": {
+                            "type": "string",
+                            "description": "Detailed description of the error and resolution suggestions"
+                        }
+                    }
+                }
+            }
+        },
+        "Resource": {
+            "properties": {
+                "id": {
+                    "readOnly": true,
+                    "type": "string",
+                    "description": "Resource Id"
+                },
+                "name": {
+                    "readOnly": true,
+                    "type": "string",
+                    "description": "Resource name"
+                },
+                "type": {
+                    "readOnly": true,
+                    "type": "string",
+                    "description": "Resource type"
+                }
+            },
+            "x-ms-azure-resource": true,
+            "description": "Describes an Azure resource."
+        },
+        "Kind": {
+            "properties": {
+                "kind": {
+                    "type": "string",
+                    "description": "Kind of the resource"
+                }
+            },
+            "required": [
+                "kind"
+            ],
+            "x-ms-azure-resource": true,
+            "description": "Describes an Azure resource with kind"
+        },
+        "SecurityContactList": {
+            "description": "List of security contacts",
+            "properties": {
+                "value": {
+                    "readOnly": true,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SecurityContact"
+                    }
+                }
+            }
+        },
+        "SecurityContact": {
+            "description": "Contact details for security issues",
+            "properties": {
+                "properties": {
+                    "readOnly": true,
+                    "type": "object",
+                    "properties": {
+                        "email": {
+                            "type": "string"
+                        },
+                        "phone": {
+                            "type": "string"
+                        },
+                        "alertNotifications": {
+                            "type": "string",
+                            "enum": ["On", "Off"],
+                            "description": "Whether to send security alerts notifications to the listed security contacts"
+                        },
+                        "alertsToAdmins": {
+                            "type": "string",
+                            "enum": ["On", "Off"],
+                            "description": "Whether to send security alerts notifications to subscription admins"
+                        }
+                    },
+                    "required": [
+                        "email",
+                        "phone",
+                        "alertNotifications",
+                        "alertsToAdmins"
+                    ]
+                }
+            },
+            "allOf": [{
+                "$ref": "#/definitions/Resource"
+            }]
+        },
+        "PricingList": {
+            "description": "List of pricing configurations",
+            "properties": {
+                "value": {
+                    "readOnly": true,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Pricing"
+                    }
+                }
+            }
+        },
+        "Pricing": {
+            "description": "Pricing tier will be applied for the scope based on the resource ID",
+            "properties": {
+                "properties": {
+                    "readOnly": true,
+                    "type": "object",
+                    "properties": {
+                        "pricingTier": {
+                            "type": "string",
+                            "enum": ["Free", "Standard"]
+                        }
+                    },
+                    "required": [
+                        "pricingTier"
+                    ]
+                }
+            },
+            "allOf": [{
+                "$ref": "#/definitions/Resource"
+            }]
+        },
+        "WorkspaceSettingList": {
+            "description": "List of workspace settings",
+            "properties": {
+                "value": {
+                    "readOnly": true,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/WorkspaceSetting"
+                    }
+                }
+            }
+        },
+        "WorkspaceSetting": {
+            "description": "Configures where to store the OMS agent data for workspaces under a scope",
+            "properties": {
+                "properties": {
+                    "readOnly": true,
+                    "type": "object",
+                    "properties": {
+                        "workspaceId": {
+                            "type": "string",
+                            "description": "The full Azure ID of the workspace"
+                        },
+                        "scope": {
+                            "type": "string",
+                            "description": "All the VMs in the scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope"
+                        }
+                    },
+                    "required": [
+                        "workspaceId",
+                        "scope"
+                    ]
+                }
+            },
+            "allOf": [{
+                "$ref": "#/definitions/Resource"
+            }]
+        },
+        "OperationList": {
+            "description": "List of possible operations for Microsoft.Security",
+            "properties": {
+                "value": {
+                    "readOnly": true,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Operation"
+                    }
+                }
+            }
+        },
+        "Operation": {
+            "description": "Possible operation in the REST API of Microsoft.Security",
+            "properties": {
+                "name": {
+                    "readOnly": true,
+                    "type": "string",
+                    "description": "Name of the operation"
+                },
+                "origin": {
+                    "readOnly": true,
+                    "type": "string",
+                    "description": "Where the operation is originated"
+                },
+                "display": {
+                    "readOnly": true,
+                    "type": "object",
+                    "properties": {
+                        "provider": {
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "resource": {
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "operation": {
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "description": {
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "Location": {
+            "description": "The ASC location of the subscription is in the \"name\" field",
+            "properties": {
+                "properties": {
+                    "readOnly": true,
+                    "type": "object",
+                    "description": "An empty set of properties"
+                }
+            },
+            "allOf": [{
+                "$ref": "#/definitions/Resource"
+            }]
+        },
+        "AutoProvisioningSettingList": {
+            "properties": {
+                "value": {
+                    "readOnly": true,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AutoProvisioningSetting"
+                    }
+                }
+            }
+        },
+        "AutoProvisioningSetting": {
+            "properties": {
+                "properties": {
+                    "readOnly": false,
+                    "type": "object",
+                    "properties": {
+                        "provisioningSetting": {
+                            "type": "string",
+                            "enum": ["Automatic", "Off"]
+                        }
+                    },
+                    "required": [
+                        "provisioningSetting"
+                    ]
+                }
+            },
+            "allOf": [{
+                "$ref": "#/definitions/Resource"
+            }]
+        },
+        "ComplianceList": {
+            "description": "List of Compliance objects",
+            "properties": {
+                "value": {
+                    "readOnly": true,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Compliance"
+                    }
+                }
+            }
+        },
+        "Compliance": {
+            "description": "Compliance of a scope",
+            "properties": {
+                "properties": {
+                    "readOnly": true,
+                    "type": "object",
+                    "description": "The Compliance score (percentage) of a Subscription is a sum of all Resources' Compliances under the given Subscription. A Resource Compliance is defined as the compliant ('healthy') Policy Definitions out of all Policy Definitions applicable to a given resource.",
+                    "properties": {
+                        "assessmentTimestampUtc": {
+                            "readOnly": true,
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The timestamp when the Compliance calculation was conducted."
+                        },
+                        "resourceCount": {
+                            "readOnly": true,
+                            "type": "integer",
+                            "description": "The resource count of the given subscription for which the Compliance calculation was conducted (needed for Management Group Compliance calculation)."
+                        },
+                        "assessmentResult": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/SegmentList"
+                            },
+                            "description": "An array of segment, which is the actually the compliance assessment."
+                        }
+                    },
+                    "required": [
+                        "assessmentTimestampUtc",
+                        "resourceCount",
+                        "assessmentResult"
+                    ]
+                }
+            },
+            "allOf": [{
+                "$ref": "#/definitions/Resource"
+            }]
+        },
+        "SegmentList": {
+            "description": "List of segments which comprise the compliance assessment.",
+            "readOnly": true,
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Segment"
+            },
+            "allOf": [{
+                "$ref": "#/definitions/Resource"
+            }]
+        },
+        "Segment": {
+            "readOnly": true,
+            "type": "object",
+            "description": "A segment of a compliance assessment.",
+            "properties": {
+                "SegmentType": {
+                    "readOnly": true,
+                    "type": "string",
+                    "description": "The segment type, e.g. compliant, non-compliance, insufficient coverage, N/A, etc."
+                },
+                "Percentage": {
+                    "type": "number",
+                    "format": "double",
+                    "readOnly": true,
+                    "description": "The size (%) of the segment."
+                }
+            }
+        }
+    },
+    "parameters": {
+        "SubscriptionId": {
+            "name": "subscriptionId",
+            "in": "path",
+            "required": true,
+            "pattern": "^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$",
+            "type": "string",
+            "description": "Azure subscription ID",
+            "x-ms-parameter-location": "method"
+        },
+        "ResourceGroupName": {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group within the user's subscription. The name is case insensitive.",
+            "pattern": "^[-\\w\\._\\(\\)]+$",
+            "minLength": 1,
+            "maxLength": 90,
+            "x-ms-parameter-location": "method"
+        },
+        "ApiVersion": {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "enum": ["2017-08-01"],
+            "description": "API version for the operation",
+            "x-ms-parameter-location": "method"
+        },
+        "ExtendedResourceProvider": {
+            "name": "extendedResourceProvider",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Resource provider name of the base resource",
+            "x-ms-parameter-location": "method"
+        },
+        "ExtendedResourceType": {
+            "name": "extendedResourceType",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Type of the base resource",
+            "x-ms-parameter-location": "method"
+        },
+        "ExtendedResourceName": {
+            "name": "extendedResourceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the base resource",
+            "x-ms-parameter-location": "method"
+        },
+        "ODataFilter": {
+            "name": "$filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "OData filter. Optional."
+        },
+        "ODataSelect": {
+            "name": "$select",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "OData select. Optional."
+        },
+        "ODataExpand": {
+            "name": "$expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "OData expand. Optional."
+        },
+        "AscLocation": {
+            "name": "asc-location",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The location where ASC stores the data of the subscription. can be retrieved from Get locations"
+        },
+        "PricingName": {
+            "name": "pricingName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "name of the pricing configuration"
+        },
+        "Pricing": {
+            "name": "pricing",
+            "in": "body",
+            "required": true,
+            "description": "Pricing object",
+            "schema": {
+                "$ref": "#/definitions/Pricing"
+            }
+        },
+        "SecurityContactName": {
+            "name": "securityContactName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Name of the security contact object"
+        },
+        "SecurityContact": {
+            "name": "securityContact",
+            "in": "body",
+            "required": true,
+            "description": "Security contact object",
+            "schema": {
+                "$ref": "#/definitions/SecurityContact"
+            }
+        },
+        "WorkspaceSettingName": {
+            "name": "workspaceSettingName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Name of the security setting"
+        },
+        "WorkspaceSetting": {
+            "name": "workspaceSetting",
+            "in": "body",
+            "required": true,
+            "description": "Security data setting object",
+            "schema": {
+                "$ref": "#/definitions/WorkspaceSetting"
+            }
+        },
+        "ComplianceType": {
+            "name": "complianceType",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Compliance type of a resource"
+        },
+        "ManagementGroupId": {
+            "name": "managementGroupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Management Group ID.",
+            "x-ms-parameter-location": "method"
+        },
+        "AutoProvisioningSettingName": {
+            "name": "settingName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Auto provisioning setting key",
+            "x-ms-parameter-location": "method"
+        },
+        "AutoProvisioningSetting": {
+            "name": "setting",
+            "in": "body",
+            "required": true,
+            "description": "Auto provisioning setting key",
+            "schema": {
+                "$ref": "#/definitions/AutoProvisioningSetting"
+            }
+        },
+        "ComplianceName": {
+            "name": "complianceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "name of the Compliance"
+        }
+    }
+}
